@@ -1,0 +1,9 @@
+# Build output
+build/
+*.exe
+*.o
+*.obj
+
+# IDE / editor
+.vscode/settings.json.user
+.cache/

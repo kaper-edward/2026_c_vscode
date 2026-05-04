@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "options": {
+        "shell": {
+            "executable": "C:/msys64/usr/bin/bash.exe",
+            "args": ["-l", "-c"]
+        },
+        "env": {
+            "MSYSTEM": "UCRT64",
+            "CHERE_INVOKING": "1"
+        }
+    },
+    "tasks": [
+        {
+            "label": "configure (cmake)",
+            "type": "shell",
+            "command": "cmake -S '${workspaceFolder}' -B '${workspaceFolder}/build' -DCMAKE_BUILD_TYPE=Debug -G 'Ninja'",
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: build launch target",
+            "type": "shell",
+            "command": "cmake --build '${workspaceFolder}/build' --target ${command:cmake.launchTargetName}",
+            "dependsOn": "configure (cmake)",
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "CMake: build all",
+            "type": "shell",
+            "command": "cmake --build '${workspaceFolder}/build' --target course_all_labs",
+            "dependsOn": "configure (cmake)",
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}

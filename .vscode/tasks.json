@@ -1,20 +1,22 @@
 {
     "version": "2.0.0",
-    "options": {
-        "shell": {
-            "executable": "C:/msys64/usr/bin/bash.exe",
-            "args": ["-l", "-c"]
-        },
-        "env": {
-            "MSYSTEM": "UCRT64",
-            "CHERE_INVOKING": "1"
-        }
-    },
     "tasks": [
         {
             "label": "configure (cmake)",
             "type": "shell",
-            "command": "cmake -S '${workspaceFolder}' -B '${workspaceFolder}/build' -DCMAKE_BUILD_TYPE=Debug -G 'Ninja'",
+            "command": "cmake -S '${workspaceFolder}' -B '${workspaceFolder}/build' -DCMAKE_BUILD_TYPE=Debug -G Ninja",
+            "windows": {
+                "options": {
+                    "shell": {
+                        "executable": "C:/msys64/usr/bin/bash.exe",
+                        "args": ["-l", "-c"]
+                    },
+                    "env": {
+                        "MSYSTEM": "UCRT64",
+                        "CHERE_INVOKING": "1"
+                    }
+                }
+            },
             "problemMatcher": []
         },
         {
@@ -26,6 +28,18 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
+            },
+            "windows": {
+                "options": {
+                    "shell": {
+                        "executable": "C:/msys64/usr/bin/bash.exe",
+                        "args": ["-l", "-c"]
+                    },
+                    "env": {
+                        "MSYSTEM": "UCRT64",
+                        "CHERE_INVOKING": "1"
+                    }
+                }
             }
         },
         {
@@ -33,7 +47,19 @@
             "type": "shell",
             "command": "cmake --build '${workspaceFolder}/build' --target course_all_labs",
             "dependsOn": "configure (cmake)",
-            "problemMatcher": ["$gcc"]
+            "problemMatcher": ["$gcc"],
+            "windows": {
+                "options": {
+                    "shell": {
+                        "executable": "C:/msys64/usr/bin/bash.exe",
+                        "args": ["-l", "-c"]
+                    },
+                    "env": {
+                        "MSYSTEM": "UCRT64",
+                        "CHERE_INVOKING": "1"
+                    }
+                }
+            }
         }
     ]
 }
